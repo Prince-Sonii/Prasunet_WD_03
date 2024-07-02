@@ -10,9 +10,6 @@ body {
     display: flex;
     justify-content:center;
     margin: 2vw 0vw;
-    /* background-color: #a6a6a6;
-    width: 400px;
-    margin: 10px auto; */
 }
 .nav_text {
     text-align: center;
@@ -31,7 +28,7 @@ body {
     width: 49vw;
     margin: 7vw auto;
 }
-.player_section {
+.player_input_section {
     display: flex;
     justify-content: space-between;
     padding: 0px 3vw;
@@ -51,8 +48,12 @@ body {
 }
 .play_button_container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin: 7vw 0px;
+}
+.play_button {
+    margin-bottom: 3vw;
 }
 .btn {
     font-size: .9vw;
@@ -69,5 +70,49 @@ body {
     cursor: pointer;
     transform: scale(1.1);
 }
-
-
+#play_section {
+    display: none;
+}
+.invalid_details {
+    display: none;
+}
+.enter_player {
+    font-size: 1.3vw;
+    color: #ff0000;
+}
+/* playing section */
+.playing_area {
+    display: flex;
+}
+.player1 {
+    font-size: 1.5vw;
+}
+.grid_back {
+    margin: 0vw 10vw;
+}
+.grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap  ;
+    width: 20vw;
+    padding:1vw; 
+    gap: 1vw;
+    margin: 0vw auto;
+}
+.box {
+    width: 5vw;
+    height: 5vw;
+    box-shadow: 1px 5px 5px white;
+    border: .4vw solid rgba(245, 245, 245, 0.867);
+    border-radius: 1vw;
+    transition: all .2s;
+}
+.box:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.back_loginPage {
+    display: flex;
+    justify-content: center;
+    margin-top: 2vw;
+}
