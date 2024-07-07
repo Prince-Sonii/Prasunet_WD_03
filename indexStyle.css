@@ -127,19 +127,14 @@ body {
     justify-content: center;
     margin-top: 2vw;
 }
-#reset_btn {
+#onWin {
     display: none;
-}
-/* #onWin {
-    position: relative;
-    display: flex;
     justify-content: center;
-    display: none;
 }
 .winAnime {
-    margin-top: 7vw;
+    margin-top: 5vw;
 }
 .onWinText {
     color: white;
     font-size: 5rem;
-} */
+}
