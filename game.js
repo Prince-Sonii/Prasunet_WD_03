@@ -13,8 +13,6 @@ playButton.addEventListener("click",()=>{
         playingSection.style.display = "block";
         displayP1.innerText = player1.value+" (X)";
         displayP2.innerText = player2.value+" (O)";
-        // player1.value = "";
-        // player2.value = "";
         assignEvent();
     } else {
         document.querySelector(".invalid_details").style.display="block";
@@ -60,9 +58,9 @@ let player2_turn = false;
 let check = Array(9).fill(0);
 const playGame = (box,i)=> {
     setTimeout(()=>{
-        // isWon();
+        isWon();
     },150)
-    if(check[i]>0) {
+    if(check[i]>0 || isWon()) {
         return;
     }
     resetButton = true;
@@ -182,6 +180,7 @@ const onDrawAnimation = ()=>{
     playingSection.style.display = "none";
     onWinMsg.innerText = "It's a draw";
     onWinMsg.style.color = "white";
+    onWinBox.style.display = "flex";
     console.log(onWinMsg);
     setTimeout(()=>{
         onWinBox.style.display = "none";
