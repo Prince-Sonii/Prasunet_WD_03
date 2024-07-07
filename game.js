@@ -13,8 +13,8 @@ playButton.addEventListener("click",()=>{
         playingSection.style.display = "block";
         displayP1.innerText = player1.value+" (X)";
         displayP2.innerText = player2.value+" (O)";
-        player1.value = "";
-        player2.value = "";
+        // player1.value = "";
+        // player2.value = "";
         assignEvent();
     } else {
         document.querySelector(".invalid_details").style.display="block";
@@ -60,9 +60,9 @@ let player2_turn = false;
 let check = Array(9).fill(0);
 const playGame = (box,i)=> {
     setTimeout(()=>{
-        isWon();
+        // isWon();
     },150)
-    if(check[i]>0 || isWon()) {
+    if(check[i]>0) {
         return;
     }
     resetButton = true;
@@ -84,7 +84,6 @@ const playGame = (box,i)=> {
         if(isDraw()) {
             reset();
         }
-        assignEvent();
     },300);
     if(!isDraw()) {
         if(player1_turn) {
@@ -137,14 +136,17 @@ const isWon = ()=> {
         if(check[arr[i][0]]>0) {
             if(check[arr[i][0]]===check[arr[i][1]] && check[arr[i][1]]===check[arr[i][2]]) {
                 if(check[arr[i][0]]==1) {
+                    onWinMsg.style.color = "red";
+                    onWonAnimation(player1.value);
                     p1WonCount++;
                     p1WonCountDisplay.innerText = `Win:${p1WonCount}`;
                 } else {
+                    onWinMsg.style.color = "green";
+                    onWonAnimation(player2.value);
                     p2WonCount++;
                     p2WonCountDisplay.innerText = `Win:${p2WonCount}`;
                 }
                 reset();
-                onWonAnimation();
                 return true;
             }
         }
@@ -158,23 +160,33 @@ const isDraw = ()=> {
             return false;
         }
     }
+    setTimeout(()=>{
+        onDrawAnimation();
+    },150)
     return true;
 }
 //on won animation thing
-const onWonAnimation = ()=>{
+const onWinMsg = document.getElementById("onWinDisplayName");
+const onWinBox = document.getElementById("onWin");
+const onWonAnimation = (pname)=>{
     playingSection.style.display = "none";
+    onWinMsg.innerText = pname+" wins";
+    onWinBox.style.display = "flex";
     setTimeout(()=>{
+        onWinBox.style.display = "none";
         playingSection.style.display = "block";
         
-    },400);  
+    },500);  
 }
 const onDrawAnimation = ()=>{
     playingSection.style.display = "none";
-
+    onWinMsg.innerText = "It's a draw";
+    onWinMsg.style.color = "white";
+    console.log(onWinMsg);
     setTimeout(()=>{
+        onWinBox.style.display = "none";
         playingSection.style.display = "block";
-        
-    },400);
+    },500);
 }
 // won counts
 let p1WonCount =0;
@@ -184,6 +196,8 @@ const p2WonCountDisplay = document.getElementById("p2WonCount");
 //resetAll
 const resetAll = ()=>{
     reset();
+    player1.value="";
+    player2.value="";
     p1WonCount = 0;
     p2WonCount = 0;
     p1WonCountDisplay.innerText= "";
